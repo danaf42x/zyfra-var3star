@@ -11,6 +11,7 @@
 	}
 
 	require(__dirname + "/api.js");
+	require(__dirname + "/db.js");
 
 // }}}
 
@@ -44,7 +45,12 @@
 
 			return cache[objId];
 		} else {
-			// TODO кэш откуда-то берет объекты
+			const obj = db_GetObject(objId);
+			if (objId) {
+				cache[objId] = obj;
+				cacheLastAccess[objId] = now;
+				return obj;
+			}
 		}
 	}
 
