@@ -10,14 +10,14 @@
 		});
 	}
 
+	require(__dirname + "/api.js");
+
 // }}}
 
 // стартовое состояние ОМ {{{
 
 	const objectModel = {};
 	{
-		// TODO каков формат входных данных?
-
 		const omTemplate = fs.readFileSync(__dirname + "/om.txt", { encoding: "utf8", flag: "r" });
 		const fieldDatas = omTemplate.split(", ");
 		for (let fieldData of Object.values(fieldDatas)) {
